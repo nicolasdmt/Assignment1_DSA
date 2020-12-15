@@ -102,8 +102,7 @@ namespace Assignment1_DSA
 
                     case 3:
                         Console.WriteLine("");
-                        int nbS = classroom.Count;
-                        Console.WriteLine("Right now, there is " + nbS + " students in the classroom, which one do you want to see ?");
+                        Console.WriteLine("From which student do you want to see the information ?");
                         int index2 = Convert.ToInt32(Console.ReadLine());
                         Student studentGet = classroom.GetElement(index2);
                         Console.WriteLine();
