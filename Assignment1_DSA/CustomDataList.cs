@@ -90,9 +90,7 @@ namespace Assignment1_DSA
 
         public void DisplayList()
         {
-            Console.WriteLine();
-            Console.WriteLine("Students in the classroom are in order :");
-            Console.WriteLine();
+            Console.WriteLine("\nStudents in the classroom are in order :\n");
             foreach (Student student in classroom)
             {
                 Console.WriteLine(student.toString());

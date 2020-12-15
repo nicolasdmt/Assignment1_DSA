@@ -54,12 +54,10 @@ namespace Assignment1_DSA
                 switch (opt)
                 {
                     case 1:
-                        Console.WriteLine("");
-                        Console.WriteLine("What is his first and last name ? And after enter his student number");
+                        Console.WriteLine("\nWhat is his first and last name ? And after enter his student number\n");
                         string F = Convert.ToString(Console.ReadLine());
                         string L = Convert.ToString(Console.ReadLine());
                         string S = Convert.ToString(Console.ReadLine());
-                        Console.WriteLine("");
                         Console.WriteLine("How many grades does he have ? Then enter them one by one");
                         int nb = Convert.ToInt32(Console.ReadLine());
                         float[] scores = Scores(nb);
@@ -75,8 +73,7 @@ namespace Assignment1_DSA
                         break;
 
                     case 2:
-                        Console.WriteLine("");
-                        Console.WriteLine("Which student do you want to remove ?\n"
+                        Console.WriteLine("\nWhich student do you want to remove ?\n"
                                 + "1 : The first one\n"
                                 + "2 : The last one\n"
                                 + "3 : A special one\n");
@@ -101,11 +98,9 @@ namespace Assignment1_DSA
                         break;
 
                     case 3:
-                        Console.WriteLine("");
-                        Console.WriteLine("From which student do you want to see the information ?");
+                        Console.WriteLine("\nFrom which student do you want to see the information ?\n");
                         int index2 = Convert.ToInt32(Console.ReadLine());
                         Student studentGet = classroom.GetElement(index2);
-                        Console.WriteLine();
                         Console.WriteLine("The student you asked is : " + studentGet.toString());
                         break;
 
