@@ -97,5 +97,37 @@ namespace Assignment1_DSA
             }
             Console.WriteLine();
         }
+
+
+        public string GetMaxElement()
+        {
+            Student[] get = new Student[1];
+            string first = "test"; string last = "test"; string nb = "test"; float av = -1;
+            get[0] = new Student(first, last, nb, av);
+            foreach (Student student in classroom)
+            {
+                if(student.AverageScore>get[0].AverageScore)
+                {
+                    get[0] = student;
+                }
+            }
+            return "\n" + "The student with the best score is " + get[0].FirstName + " " + get[0].LastName + "\n";
+        }
+
+
+        public string GetMinElement()
+        {
+            Student[] get = new Student[1];
+            string first = "test"; string last = "test"; string nb = "test"; float av = 101;
+            get[0] = new Student(first, last, nb, av);
+            foreach (Student student in classroom)
+            {
+                if (student.AverageScore < get[0].AverageScore)
+                {
+                    get[0] = student;
+                }
+            }
+            return "\n" + "The student with the lowest score is " + get[0].FirstName + " " + get[0].LastName + "\n";
+        }
     }
 }

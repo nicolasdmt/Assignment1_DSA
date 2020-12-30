@@ -22,7 +22,7 @@ namespace Assignment1_DSA
             for (int i = 0; i < scores.Length; i++)
             {
                 averageS += scores[i];
-            }
+            }   
             averageS /= scores.Length;
             return averageS;
         }
@@ -41,16 +41,18 @@ namespace Assignment1_DSA
             classroom.PopulateWithSampleData();
             do
             {
-                Console.Clear();
                 Console.WriteLine("Menu :\n"
                                  + "Option 1 : Add a student\n"
                                  + "Option 2 : Remove a student\n"
                                  + "Option 3 : Get a particular student\n"
                                  + "Option 4 : See the whole classroom\n"
+                                 + "Option 5 : Get the student with the best score\n"
+                                 + "Option 6 : Get the student with the lowest score\n"
                                  + "\n"
                                  + "Pick the chosen option ");
                 Console.WriteLine();
                 int opt = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
                 switch (opt)
                 {
                     case 1:
@@ -108,9 +110,18 @@ namespace Assignment1_DSA
                         classroom.DisplayList();
                         break;
 
+                    case 5:
+                        Console.WriteLine(classroom.GetMaxElement());
+                        break;
+
+                    case 6:
+                        Console.WriteLine(classroom.GetMinElement());
+                        break;
+
                 }
                 Console.WriteLine("Press Esc to exit or any other keyboard key to return to the menu");
                 cki = Console.ReadKey();
+                Console.Clear();
             } while (cki.Key != ConsoleKey.Escape);
         }
     }
