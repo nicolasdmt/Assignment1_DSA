@@ -41,7 +41,7 @@ namespace Assignment1_DSA
 
         public void Add(Student student)
         {
-            Console.WriteLine("Where do you want to add the student ?\n"
+            Console.WriteLine("\nWhere do you want to add the student ?\n"
                                 + "1 : At the beginning\n"
                                 + "2 : At the end\n");
             int opt = Convert.ToInt32(Console.ReadLine());
@@ -68,66 +68,141 @@ namespace Assignment1_DSA
         //in the linkedList like there is no methods in C# to get and remove an index that you want
         public void RemoveByIndex(int index)
         {
-
-            Student[] copy = new Student[classroom.Count];
-            classroom.CopyTo(copy, 0);
-            Student removed = copy[index - 1];
-            classroom.Remove(removed);
+            if (classroom.Count > 0)
+            {
+                Student[] copy = new Student[classroom.Count];
+                classroom.CopyTo(copy, 0);
+                Student removed = copy[index - 1];
+                classroom.Remove(removed);
+            }
         }
 
 
         public void RemoveFirst()
         {
-            classroom.RemoveFirst();
+            if(classroom.Count>0)
+            {
+                classroom.RemoveFirst();
+            }
         }
 
 
         public void RemoveLast()
         {
-            classroom.RemoveLast();
+            if (classroom.Count > 0)
+            {
+                classroom.RemoveLast();
+            }
         }
 
 
         public void DisplayList()
         {
-            Console.WriteLine("\nStudents in the classroom are in order :\n");
-            foreach (Student student in classroom)
+            if (classroom.Count == 0) { Console.WriteLine("The classroom is empty"); }
+            else
             {
-                Console.WriteLine(student.toString());
+                Console.WriteLine("\nStudents in the classroom are in order :\n");
+                foreach (Student student in classroom)
+                {
+                    Console.WriteLine(student.toString());
+                }
             }
-            Console.WriteLine();
         }
 
 
         public string GetMaxElement()
         {
-            Student[] get = new Student[1];
-            string first = "test"; string last = "test"; string nb = "test"; float av = -1;
-            get[0] = new Student(first, last, nb, av);
-            foreach (Student student in classroom)
+            if (classroom.Count == 0) { return "The classroom is empty"; }
+            else
             {
-                if(student.AverageScore>get[0].AverageScore)
+                Student[] get = new Student[1];
+                string first = "test"; string last = "test"; string nb = "test"; float av = -1;
+                get[0] = new Student(first, last, nb, av);
+                foreach (Student student in classroom)
                 {
-                    get[0] = student;
+                    if (student.AverageScore > get[0].AverageScore)
+                    {
+                        get[0] = student;
+                    }
                 }
+                return "\n" + "The student with the best score is " + get[0].FirstName + " " + get[0].LastName;
             }
-            return "\n" + "The student with the best score is " + get[0].FirstName + " " + get[0].LastName + "\n";
         }
 
 
         public string GetMinElement()
         {
-            Student[] get = new Student[1];
-            string first = "test"; string last = "test"; string nb = "test"; float av = 101;
-            get[0] = new Student(first, last, nb, av);
-            foreach (Student student in classroom)
+            if (classroom.Count == 0) { return "The classroom is empty"; }
+            else
             {
-                if (student.AverageScore < get[0].AverageScore)
+                Student[] get = new Student[1];
+                string first = "test"; string last = "test"; string nb = "test"; float av = 101;
+                get[0] = new Student(first, last, nb, av);
+                foreach (Student student in classroom)
                 {
-                    get[0] = student;
+                    if (student.AverageScore < get[0].AverageScore)
+                    {
+                        get[0] = student;
+                    }
                 }
+                return "\n" + "The student with the lowest score is " + get[0].FirstName + " " + get[0].LastName;
             }
-            return "\n" + "The student with the lowest score is " + get[0].FirstName + " " + get[0].LastName + "\n";
+        }
+
+
+        public void Sort(int sortDirection, int sortField)
+        {
+            Student[] copy = new Student[classroom.Count];
+            classroom.CopyTo(copy, 0);
+            switch (sortField)
+            {
+                case 1:
+                    Array.Sort(copy, delegate (Student student1, Student student2)
+                    {
+                        return student1.LastName.CompareTo(student2.LastName);
+                    });
+                    break;
+
+                case 2:
+                    Array.Sort(copy, delegate (Student student1, Student student2)
+                    {
+                        return student1.FirstName.CompareTo(student2.FirstName);
+                    });
+                    break;
+
+                case 3:
+                    Array.Sort(copy, delegate (Student student1, Student student2)
+                    {
+                        return student1.StudentNumber.CompareTo(student2.StudentNumber);
+                    });
+                    break;
+
+                case 4:
+                    Array.Sort(copy, delegate (Student student1, Student student2)
+                    {
+                        return student1.AverageScore.CompareTo(student2.AverageScore);
+                    });
+                    break;
+            }
+
+            classroom.Clear();
+
+            switch (sortDirection)
+            {
+                case 1:
+                    foreach (Student student in copy)
+                    {
+                        classroom.AddLast(student);
+                    }
+                    break;
+
+                case 2:
+                    foreach (Student student in copy)
+                    {
+                        classroom.AddFirst(student);
+                    }
+                    break;
+            }
         }
     }
 }
