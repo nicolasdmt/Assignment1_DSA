@@ -107,12 +107,12 @@ namespace Assignment1_DSA
                                     + "2: with the first names\n"
                                     + "3: with the student numbers\n"
                                     + "4: with the scores\n");
-                        int opt3 = Convert.ToInt32(Console.ReadLine());
+                        int sortField = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("\nDo you want to sort the classroom by ascending order or descending ?\n"
                                     + "1: by ascending order\n"
                                     + "2: by descending disorder\n");
-                        int opt4 = Convert.ToInt32(Console.ReadLine());
-                        classroom.Sort(opt4,opt3);
+                        int sortDirection = Convert.ToInt32(Console.ReadLine());
+                        classroom.Sort(sortDirection,sortField);
                         Console.WriteLine("\nThe classroom is now sorted");
                         break;
 
